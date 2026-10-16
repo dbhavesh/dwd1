@@ -1,0 +1,2 @@
+docker build --load -t web-server .
+docker run web-server
