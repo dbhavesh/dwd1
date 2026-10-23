@@ -1,0 +1,2 @@
+docker build --load -t spring-ex1-11 .
+docker run --rm --name spring-ex1-11 -p 8080:8080 spring-ex1-11
