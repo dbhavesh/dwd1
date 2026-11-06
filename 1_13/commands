@@ -1,0 +1,2 @@
+docker build --load -t backend .
+docker run --rm --name hello-backend -p 8080:8080 backend
