@@ -1,0 +1,30 @@
+FROM ubuntu:24.04
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    curl ca-certificates xz-utils && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL \
+    https://nodejs.org/dist/v16.20.2/node-v16.20.2-linux-x64.tar.xz \
+    -o /tmp/node.tar.xz && \
+    tar -xJf /tmp/node.tar.xz -C /usr/local --strip-components=1 && \
+    rm /tmp/node.tar.xz
+
+RUN node --version && npm --version
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+RUN npm install -g serve@14.2.5
+
+EXPOSE 5001
+
+CMD ["serve", "-s", "-l", "5001", "build"]

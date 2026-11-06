@@ -1,0 +1,2 @@
+docker build --load -t frontend .
+docker run --rm --name hello-frontend -p 5001:5001 frontend
