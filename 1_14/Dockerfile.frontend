@@ -15,11 +15,9 @@ RUN node --version && npm --version
 
 WORKDIR /usr/src/app
 
-COPY 1_12/package*.json ./
+COPY 1_12/ .
 
 RUN npm install
-
-COPY 1_12/ .
 
 ENV REACT_APP_BACKEND_URL=http://localhost:8080/
 
