@@ -1,0 +1,4 @@
+docker buildx build --load -t frontend -f Dockerfile.frontend ..
+docker buildx build --load -t backend -f Dockerfile.backend ..
+docker run -d --rm --name ex114-backend -p 8080:8080 backend
+docker run -d --rm --name ex114-frontend -p 5001:5001 frontend
