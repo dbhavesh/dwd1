@@ -1,0 +1,17 @@
+https://fashion-mnist-api-dbr007.onrender.com/docs
+
+For Exercise 1.16, I deployed the FastAPI inference service from my Fashion-MNIST MLOps project to Render using the Docker image I previously published to Docker Hub.
+
+Docker Hub image: dbr007/fashion-mnist-api:v1
+
+I created a Render Web Service using the existing Docker image, selected the Free compute plan, configured port 8000, and set /health as the health-check endpoint.
+
+Render successfully pulled the image, started the FastAPI application using Uvicorn, and made the service publicly accessible through HTTPS.
+
+The deployment logs confirmed successful application startup and HTTP 200 responses from the /health endpoint.
+
+The root URL returns HTTP 404 because no root endpoint is defined. The application is accessible through its documented API routes.
+
+The standalone inference service does not currently have a configured model artifact, so prediction readiness requires additional infrastructure.
+
+Source code: https://github.com/dbhavesh/fashion-mnist-mlops
